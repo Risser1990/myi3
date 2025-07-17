@@ -1,0 +1,28 @@
+[global]
+font = "JetBrainsMono Nerd Font 12"
+background = "#272822"            # dark background
+foreground = "#f8f8f2"            # white text
+separator_color = frame
+icon_position = left
+corner_radius = 8
+padding = 16
+horizontal_padding = 12
+line_height = 4
+transparency = 0.8
+format = "<b>%s</b>\n%b"
+
+[urgency_low]
+# cyan frame
+timeout = 3
+frame_color = "#a1efe4"
+
+[urgency_normal]
+# orange frame
+timeout = 5
+frame_color = "#fd971f"           
+
+[urgency_critical]     
+# red frame and text
+frame_color = "#f92672" 
+foreground = "#f92672"            
+timeout = 0
