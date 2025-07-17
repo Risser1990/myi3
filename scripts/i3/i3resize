@@ -1,0 +1,36 @@
+
+#!/bin/sh
+
+# Exit if no direction is provided
+[ -z "$1" ] && echo "No direction provided" && exit 1
+
+# Define how much the window should be resized
+distanceStr="10 px or 10 ppt"
+
+# Helper function to attempt one resize direction, fallback to alternate if it fails
+moveChoice() {
+  # Try the first resize direction
+  i3-msg resize "$1" "$2" "$distanceStr" | grep '"success":true' || \
+  # If it fails, try the fallback direction
+  i3-msg resize "$3" "$4" "$distanceStr"
+}
+
+# Determine direction based on input argument
+case $1 in
+  up)
+    # Try growing up, fallback to shrinking down
+    moveChoice grow up shrink down
+    ;;
+  down)
+    # Try shrinking up, fallback to growing down
+    moveChoice shrink up grow down
+    ;;
+  left)
+    # Try shrinking right, fallback to growing left
+    moveChoice shrink right grow left
+    ;;
+  right)
+    # Try growing right, fallback to shrinking left
+    moveChoice grow right shrink left
+    ;;
+esac
