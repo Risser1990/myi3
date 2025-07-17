@@ -17,18 +17,12 @@ exec_always --no-startup-id copyq
 for_window [class="copyq"] floating enable, resize set 20 ppt 20 ppt, move position center
 
 # Startup services
-exec --no-startup-id xset s off -dpms
+#exec --no-startup-id xset s off -dpms #will disable screen blank 
 exec --no-startup-id dunst
 exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id nm-applet
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id ~/.config/scripts/i3/setup-monitors.sh
-exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id flameshot
-exec --no-startup-id steam -silent
-exec --no-startup-id 1password --silent
-exec --no-startup-id sh -c "sleep 8 && birdtray"
 exec --no-startup-id pamixer --set-volume 50 &
 
 
@@ -71,10 +65,6 @@ bindsym $mod+m exec $mail
 bindsym $mod+o exec $office
 bindsym $mod+Print exec $shot
 bindsym $mod+Return exec $terminal
-
-
-## ───── Update Script ─────
-bindsym $mod+Ctrl+u exec --no-startup-id ~/.config/scripts/i3/update-scratchpad.sh
 
 
 ## ───── Volume Controls ─────
